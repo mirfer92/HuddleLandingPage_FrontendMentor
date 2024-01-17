@@ -1,0 +1,70 @@
+@use 'mixfun';
+
+.hero{
+    min-height: 100vh;
+    background-color: var(--violet);
+    position: relative;
+
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60%;
+        background-image: url('../images/bg-mobile.svg');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        z-index: 0;
+
+        @include mixfun.media{
+            background-image: url('../images/bg-desktop.svg');
+            height: 100%;
+        }
+    }
+
+    &__container{
+        @include mixfun.container();
+        z-index: 10;
+        position: relative;
+        display: grid;
+        gap: mixfun.pixels-rem(50);
+        text-align: center;
+
+        @include mixfun.media{
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            text-align: start;
+        }
+    }
+
+    &__img{
+        width: 100%;
+        display: block;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    &__texts {
+        color: #fff;
+    }
+
+    &__title{
+        font-family: var(--font-headings);
+        font-size: mixfun.pixels-rem(28);
+    }
+
+    &__paragraph{
+        line-height: 1.5;
+        margin: 1.2rem 0;
+    }
+
+    &__cta{
+        display: inline-block;
+        color: var(--violet);
+        background-color: #fff;
+        padding: 15px 75px;
+        text-decoration: none;
+        border-radius: 30px;
+    }
+}
